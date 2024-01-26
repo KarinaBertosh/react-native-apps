@@ -1,17 +1,13 @@
-import { StyleSheet, View, Text, Image} from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 import { gStyles } from '../../../styles/style';
 
-export default function FullInfo({route}: {route: any}) {
-  const {name, full, img} = route.params;
+export default function FullInfo({ route }: { route: any; }) {
+  const { name, full, img } = route.params;
 
   return (
     <View style={gStyles.main}>
-       <Image source={{
-            width: 400,
-            height: 200,
-            uri: img,
-          }}
-          />
+      <Image style={gStyles.image} source={{ uri: img }}
+      />
       <Text style={[gStyles.title, styles.header]}>{name}</Text>
       <Text style={styles.full}>{full}</Text>
     </View>
@@ -30,4 +26,4 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginTop: 25,
   }
-})
+});

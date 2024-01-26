@@ -1,4 +1,3 @@
-import { StyleSheet, SafeAreaView, Text } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import { useState } from 'react';
@@ -22,7 +21,3 @@ export default function App() {
     );
   }
 }
-
-const styles = StyleSheet.create({
-
-});

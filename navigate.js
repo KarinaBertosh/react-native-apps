@@ -16,7 +16,7 @@ export default function Navigate() {
                     {
                         title: 'Main',
                         headerStyle: { backgroundColor: '#eb5d3d', height: 90 },
-                        headerTitleStyle: { fontWeight: 'light' }
+                        headerTitleStyle: { fontWeight: '400' }
                     }
                 }
             />

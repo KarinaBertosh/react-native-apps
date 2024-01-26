@@ -1,7 +1,7 @@
-import { StyleSheet, SafeAreaView, Text, FlatList, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, SafeAreaView, Text, FlatList, TouchableOpacity, Image, Modal } from 'react-native';
 import { gStyles } from '../../styles/style';
 import { useState } from 'react';
-
+import { Ionicons } from '@expo/vector-icons';
 interface INew {
   name: string,
   anons: string,
@@ -17,16 +17,21 @@ export default function Main({ navigation }: { navigation: any; }) {
     { name: 'Facebook', anons: 'Facebook!!!', full: 'Facebook is cool', key: '3', img: 'https://media.istockphoto.com/id/1410263547/vector/data-analytics-or-marketing-seo-optimization-illustration-concept-with-abstract-infographics.jpg?s=612x612&w=is&k=20&c=-OrMZKG9ppSZtKYJo17kQuIMSt9KTncIRLZBBn3otmQ=' }
   ]);
 
+  const [modalWindow, setModalWindow] = useState(false);
+
   return (
     <SafeAreaView style={gStyles.main}>
-      <Text style={gStyles.title}>Main Page</Text>
+      <Modal visible={modalWindow}>
+        <View style={gStyles.main}>
+          <Ionicons name="close-circle" size={24} color="red" style={styles.iconClose} onPress={() => setModalWindow(false)}/>
+          <Text style={styles.title}>Form for adding articles</Text>
+        </View>
+      </Modal>
+      <Ionicons name="add-circle" size={24} color="green" style={styles.iconAdd} onPress={() => setModalWindow(true)}/>
+      <Text style={[gStyles.title, styles.header]}>Main Page</Text>
       <FlatList data={news} renderItem={(({ item }: { item: INew; }) => (
         <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('FullInfo', item)}>
-          <Image source={{
-            width: 400,
-            height: 200,
-            uri: item.img,
-          }}
+          <Image style={gStyles.image} source={{ uri: item.img }}
           />
           <Text style={styles.title}>{item.name}</Text>
           <Text style={styles.anons}>{item.anons}</Text>
@@ -37,6 +42,13 @@ export default function Main({ navigation }: { navigation: any; }) {
 }
 
 const styles = StyleSheet.create({
+  iconAdd: {
+    textAlign: 'center',
+    marginBottom: 15,
+  },
+  iconClose: {
+    textAlign: 'center',
+  },
   header: {
     width: '100%',
     marginBottom: 30,
@@ -58,5 +70,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 5,
     color: '#474747',
-  }
+  },
 });
