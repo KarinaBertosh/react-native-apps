@@ -7,8 +7,9 @@ export const gStyles = StyleSheet.create({
         paddingTop: 60,
     },
     title: {
+        textAlign: 'center',
         fontSize: 20,
         color: '#333',
-        fontFamily: 'mt-light'
+        fontFamily: 'mt-light',
     }
 });

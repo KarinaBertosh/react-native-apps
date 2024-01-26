@@ -4,7 +4,7 @@ import FullInfo from './src/components/FullInfo/FullInfo';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-const stack = createStackNavigator()
+const stack = createStackNavigator();
 
 export default function Navigate() {
     return <NavigationContainer>
@@ -12,13 +12,19 @@ export default function Navigate() {
             <stack.Screen
                 name="Main"
                 component={Main}
-                options={{title: 'Main'}}
+                options={
+                    {
+                        title: 'Main',
+                        headerStyle: { backgroundColor: '#eb5d3d', height: 90 },
+                        headerTitleStyle: { fontWeight: 'light' }
+                    }
+                }
             />
-             <stack.Screen
+            <stack.Screen
                 name="FullInfo"
                 component={FullInfo}
-                options={{title: 'FullInfo'}}
+                options={{ title: 'FullInfo' }}
             />
         </stack.Navigator>
-    </NavigationContainer>
+    </NavigationContainer>;
 }
